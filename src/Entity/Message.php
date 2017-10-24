@@ -17,19 +17,19 @@ class Message
 
     /**
      * @var string
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     protected $awsId;
 
     /**
      * @var int
-     * @Column(type="integer")
+     * @Column(type="integer", nullable=true)
      */
     protected $receiveCount;
 
     /**
      * @var string
-     * @Column(type="string")
+     * @Column(type="string", nullable=true, length=1000)
      */
     protected $receipt;
 
