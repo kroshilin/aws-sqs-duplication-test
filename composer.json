@@ -1,0 +1,22 @@
+{
+    "name": "kroshilin/sqs-test",
+    "authors": [
+        {
+            "name": "Anton Kroshilin",
+            "email": "kroshilin.a@afkxxx.com"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.36",
+        "vlucas/phpdotenv": "^2.4",
+        "monolog/monolog": "^1.23",
+        "php-di/php-di": "^5.4",
+        "symfony/console": "^3.3",
+        "doctrine/orm": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/"
+        }
+    }
+}
