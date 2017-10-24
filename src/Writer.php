@@ -29,6 +29,7 @@ class Writer extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $phpPath = $this->getApplication()->getContainer()->get('config')['phpPath'];
         $queue = $input->getOption('queue');
         $threads = $input->getOption('threads');
         $count = $input->getOption('count') / $threads;
@@ -36,7 +37,7 @@ class Writer extends Command
         $pushed = $this->start($this->generator->generate((int)$count), $queue);
         while ($threads - 1) {
             $threads--;
-            system("/usr/local/bin/php " . __DIR__ . "/../index.php write --count=$count --queue=$queue >> /dev/null & 2>/dev/null");
+            system("$phpPath " . __DIR__ . "/../index.php write --count=$count --queue=$queue >> /dev/null & 2>/dev/null");
         }
         $output->writeln("<question>$pushed messages published in parent process. Some processes may still work in background.</question>");
     }

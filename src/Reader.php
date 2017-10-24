@@ -25,13 +25,14 @@ class Reader extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $phpPath = $this->getApplication()->getContainer()->get('config')['phpPath'];
         $queue = $input->getOption('queue');
         $threads = $input->getOption('threads');
         $count = $input->getOption('count')/$threads;
         $output->writeln("<info>Will receive $count messages in this process. Others will be received in forks.</info>");
         while ($threads - 1) {
             $threads--;
-            system("/usr/local/bin/php " . __DIR__ . "/../index.php read --count=$count --queue=$queue >> /dev/null & 2>/dev/null");
+            system("$phpPath " . __DIR__ . "/../index.php read --count=$count --queue=$queue >> /dev/null & 2>/dev/null");
         }
         foreach ($this->read($queue, $count) as $message) {
             $data = $message->getData();

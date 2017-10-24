@@ -17,4 +17,5 @@ return [
         'user' => getenv('DB_USER'),
         'password' => getenv('DB_PASS'),
     ],
+    'phpPath' => getenv('PHP_PATH'),
 ];
